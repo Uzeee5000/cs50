@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: When using sort1 it takes very less time when used on sorted files as compared to random or reversed text. Indicating that it takes n square steps at times but n steps only when the list is already sorted.
+
+sort2 uses: Merge Sort
+
+How do you know?: It takes relatively less but almost same amount of time when using on different files indicating that it takes nlogn amount of steps to complete.
+
+sort3 uses: Selection Sort
+
+How do you know?: I takes relatively more time to execute as compared to other sorts and also it takes almost same amount of time when used on  reversed, random or sorted files indicating that it takes n square steps to complete.
