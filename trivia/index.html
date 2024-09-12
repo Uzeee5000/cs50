@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+    <style>
+        .correct {
+            background-color: green;
+            color: white;
+        }
+        .incorrect {
+            background-color: red;
+            color: white;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            color: black; /* Ensure feedback text is black */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const correctAnswer1 = "Murder";
+            const correctAnswer2 = "Carbon";
+
+            // Function to check multiple-choice answers
+            document.querySelectorAll('.section button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const feedbackElement = this.closest('.section').querySelector('.feedback');
+                    if (this.textContent === correctAnswer1) {
+                        this.classList.remove('incorrect');
+                        this.classList.add('correct');
+                        feedbackElement.textContent = "Correct!";
+                    } else {
+                        this.classList.remove('correct');
+                        this.classList.add('incorrect');
+                        feedbackElement.textContent = "Incorrect";
+                    }
+                });
+            });
+
+            // Function to check free-response answer
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                const userInput = document.querySelector('#name').value.trim().toLowerCase();
+                const feedbackElement = this.closest('.section').querySelector('.feedback');
+                const inputField = document.querySelector('#name');
+
+                if (userInput === correctAnswer2.toLowerCase()) {
+                    inputField.classList.remove('incorrect');
+                    inputField.classList.add('correct');
+                    feedbackElement.textContent = "Correct!";
+                } else {
+                    inputField.classList.remove('correct');
+                    inputField.classList.add('incorrect');
+                    feedbackElement.textContent = "Incorrect";
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice</h2>
+            <hr>
+            <h3>What is a group of crows called?</h3>
+            <div class="feedback"></div>
+            <button id="a">Clutter</button>
+            <button id="b">Rockstars</button>
+            <button id="c">Murder</button>
+            <button id="d">Cattle</button>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <h3>What are diamonds made of?</h3>
+            <div class="feedback"></div>
+            <form>
+                <input autocomplete="off" autofocus id="name" type="text">
+                <input type="submit" value="Check Answer">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
